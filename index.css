@@ -1,111 +1,171 @@
-
 /* RESET */
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-/* Bakgrund – mörkare och intensivare än login */
+/* Bakgrund – mörkgrön + svart */
 body{
-  min-height:100vh;
-  font-family:"Special Elite", monospace;
-  color:#E5ECFF;
+min-height:100vh;
+font-family:"Special Elite", monospace;
+color:#E5ECFF;
 
-  background: radial-gradient(
-    ellipse at center,
-    rgba(20, 30, 30, 1) 0%,
-    rgba(0, 0, 0, 1) 100%
-  );
+background: radial-gradient(
+ellipse at center,
+rgba(10, 20, 15, 1) 0%,
+rgba(0, 0, 0, 1) 100%
+);
 
-  overflow:hidden;
+overflow:hidden;
+position:relative;
+}
+
+/* RÖK / DIMMA */
+body::before{
+content:"";
+position:absolute;
+inset:0;
+background:url("https://grainy-gradients.vercel.app/noise.svg");
+opacity:0.07;
+mix-blend-mode:soft-light;
+pointer-events:none;
+}
+
+/* EMERALD NEON GLOW */
+body::after{
+content:"";
+position:absolute;
+width:650px;
+height:650px;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:radial-gradient(circle, rgba(0,255,150,0.25) 0%, transparent 70%);
+filter:blur(140px);
+animation:pulse 6s ease-in-out infinite;
+pointer-events:none;
+}
+
+@keyframes pulse{
+0%{ opacity:0.4; transform:translate(-50%,-50%) scale(1); }
+50%{ opacity:0.9; transform:translate(-50%,-50%) scale(1.25); }
+100%{ opacity:0.4; transform:translate(-50%,-50%) scale(1); }
 }
 
 /* Frostad glas */
 .glaspanel{
-  background:rgba(255,255,255,0.07);
-  backdrop-filter:blur(30px);
-  border:1px solid rgba(255,255,255,0.15);
-  box-shadow:0 40px 100px rgba(0,0,0,.9);
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(30px);
+border:1px solid rgba(255,255,255,0.12);
+box-shadow:0 40px 100px rgba(0,0,0,.9);
 }
 
 /* Topbar */
 .topbar{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  height:70px;
-  padding:0 24px;
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:70px;
+padding:0 24px;
 
-  display:flex;
-  align-items:center;
-  gap:14px;
+display:flex;
+align-items:center;
+gap:14px;
 
-  z-index:10;
+z-index:10;
 }
 
+/* LOGO + HALO */
 .logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:26px;
-  font-weight:700;
-  letter-spacing:2px;
+position:relative;
+display:flex;
+align-items:center;
+gap:12px;
+font-size:26px;
+font-weight:700;
+letter-spacing:2px;
 }
 
+.logo::before{
+content:"";
+position:absolute;
+inset:-12px -22px;
+border-radius:999px;
+background:linear-gradient(135deg,#001a10,#00ff99,#001a10);
+opacity:0.35;
+filter:blur(10px);
+z-index:-1;
+}
+
+/* COOLARE PRICK – 3D EMERALD */
 .dot{
-  width:14px;
-  height:14px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#8B5CF6,#22D3EE);
-  box-shadow:0 0 22px rgba(139,92,246,1);
+width:20px;
+height:20px;
+border-radius:50%;
+background:
+radial-gradient(circle at 30% 30%, #eafff5 0%, #00ff99 25%, #006644 70%, #000000 100%);
+box-shadow:
+0 0 25px rgba(0,255,150,1),
+0 0 60px rgba(0,255,150,0.5),
+inset 0 0 12px rgba(255,255,255,0.4);
 }
 
 /* Center box */
 .center-box{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 
-  width:420px;
-  padding:40px;
-  border-radius:20px;
-  text-align:center;
+width:450px;
+padding:50px 40px;
+border-radius:20px;
+text-align:center;
 }
 
-/* Text */
+/* Glitch Title */
 .title{
-  font-size:42px;
-  margin-bottom:10px;
-  color:#E5ECFF;
-  text-shadow:0 0 20px rgba(139,92,246,.6);
+font-size:48px;
+margin-bottom:10px;
+color:#e5fffe;
+position:relative;
+text-shadow:0 0 20px rgba(0, 255, 149, 0);
+animation:glitch 2.5s infinite;
+}
+
+@keyframes glitch{
+0%{ text-shadow:2px 2px #00ff9964, -2px -2px #00cc66b6; }
+20%{ text-shadow:-2px 2px #00ff9954, 2px -2px #00cc66b0; }
+40%{ text-shadow:2px -2px #00ff9969, -2px 2px #00cc66bc; }
+60%{ text-shadow:-2px -2px #00ff9979, 2px 2px #000201af; }
+100%{ text-shadow:0 0 20px rgba(0,255,150,.5); }
 }
 
 .subtitle{
-  font-size:18px;
-  margin-bottom:30px;
-  color:#94a3b8;
+font-size:18px;
+margin-bottom:30px;
+color:#9bb8a5;
 }
 
 /* Loader */
 .loader{
-  width:60px;
-  height:60px;
-  border:6px solid rgba(255,255,255,0.2);
-  border-top-color:#8B5CF6;
-  border-radius:50%;
-  margin:0 auto 30px;
-  animation:spin 1.2s linear infinite;
+width:60px;
+height:60px;
+border:6px solid rgba(255,255,255,0.15);
+border-top-color:#00ff99;
+border-radius:50%;
+margin:0 auto 30px;
+animation:spin 1.2s linear infinite;
 }
 
 @keyframes spin{
-  to{ transform:rotate(360deg); }
+to{ transform:rotate(360deg); }
 }
 
 .small{
-  font-size:14px;
-  color:#94a3b8;
-  margin-top:10px;
+font-size:14px;
+color:#9bb8a5;
+margin-top:10px;
 }
